@@ -1,0 +1,28 @@
+import React, { ReactNode } from "react";
+
+interface MenuItemProps {
+  onClick: () => void; 
+  label: string; 
+  icon: ReactNode;
+  closeMenu: () => void;  
+}
+
+const MenuItem: React.FC<MenuItemProps> = ({ onClick, label, icon, closeMenu  }) => {
+
+  const handleClick = () => {
+    onClick(); // Execute the passed onClick function
+    closeMenu(); // Close the menu after click
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className="px-4 py-3 hover:bg-neutral-300 transition font-semibold flex flex-row items-center "
+    >
+      <p className="mr-3">{icon}</p>
+      {label}
+    </div>
+  );
+};
+
+export default MenuItem;
